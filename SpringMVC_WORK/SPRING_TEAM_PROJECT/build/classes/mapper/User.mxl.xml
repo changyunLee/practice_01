@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.kr.login.service.mapper.UuserMapper">
+
+	<select id="login" resultType="co.kr.login.web.UserVO">
+		select * from 
+		user_cook
+		where user_id = #{user_id}
+		and user_pw = #{user_pw}
+	</select>
+	
+	<select id="loginChick" resultType="int">
+		SELECT count(*)
+		FROM user_cook
+		where user_id = #{user_id}
+	</select>
+	
+	<select id="cookShow" resultType="co.kr.myapp.model.ManagerCookVO">
+		<![CDATA[
+			select * from
+			(
+				select rownum rn, c_num,c_title,c_content,c_date,c_writer,c_cnt from board_cook
+			]]>
+			<if test="keyword != null and keyword != ''">
+				where ${type} like '%'||#{keyword}||'%'
+			</if>
+				order by c_num desc
+			<![CDATA[	
+			)a
+				where a.rn > #{startRn}
+				and a.rn <= #{endRn}
+				order by c_num desc
+		]]>	
+	</select>
+	
+	<select id="cookTotal" resultType="int">
+		select count(*)
+		from
+		board_cook
+		<if test="keyword != null and keyword != ''">
+			where ${type} like '%'||#{keyword}||'%'
+		</if>
+	</select>
+	
+	
+	<select id="noticeShow" resultType="co.kr.notice.web.NoticeVO">
+		<![CDATA[
+			select * from
+			(
+				select rownum rn, n_num,n_title,n_content,n_date,n_writer,n_cnt from cook_notice
+			]]>
+			<if test="keyword != null and keyword != ''">
+				where ${type} like '%'||#{keyword}||'%'
+			</if>
+				order by n_num desc
+			<![CDATA[	
+			)a
+				where a.rn > #{startRn}
+				and a.rn <= #{endRn}
+				order by n_num desc
+		]]>	
+	</select>
+	
+	<select id="noticeTotal" resultType="int">
+		select count(*)
+		from
+		cook_notice
+		<if test="keyword != null and keyword != ''">
+			where ${type} like '%'||#{keyword}||'%'
+		</if>
+	</select>
+	
+	<select id="cookDetail" resultType="co.kr.myapp.model.ManagerCookVO">
+		select * from
+		board_cook
+		where c_num = #{c_num}
+	</select>
+	
+	<update id="cookCntUP">
+		update board_cook
+		set
+		c_cnt = #{c_cnt}
+		where c_num = #{c_num}
+	</update>
+	
+	<select id="noticeDetail" resultType="co.kr.notice.web.NoticeVO">
+		select * from
+		cook_notice
+		where n_num = #{n_num}
+	</select>
+	
+	<update id="noticeCntUP">
+		update cook_notice
+		set
+		n_cnt = #{n_cnt}
+		where n_num = #{n_num}
+	</update>
+	
+	<select id="cntMax" resultType="int">
+		select max(c_num) from 
+		board_cook
+	</select>
+	
+	<insert id="insert">
+		insert into
+		board_cook
+		(c_num, c_title, c_content, c_writer)
+		values(#{c_num}, #{c_title}, #{c_content}, #{c_writer})
+	</insert>
+	
+	<update id="update">
+		update board_cook
+		set
+		c_title = #{c_title}, c_content = #{c_content}
+		where c_num = #{c_num}
+	</update>
+	
+	<delete id="delete">
+		delete from 
+		board_cook
+		where c_num = #{c_num}
+	</delete>
+	
+	<select id="selectAll" resultType="co.kr.proj.userVO.UserVO">
+		<![CDATA[
+		select * from
+			( select rownum rn, user_num,user_id, user_pw, user_name, user_age, user_email from user_cook
+			]]>
+			<if test="keyword != null and keyword != ''">
+				where ${type} like '%'||#{keyword}||'%'
+			</if>
+				order by user_num 
+			<![CDATA[	
+			)a
+			where a.rn > #{startRn}
+			and a.rn <= #{endRn}
+			order by user_num 
+		]]>
+	</select>
+	
+	<select id="userDetail" resultType="co.kr.login.web.UserVO" parameterType="string">
+		select * from user_cook where user_id = #{user_id}
+	</select>
+	
+	<update id="userUdate" parameterType="co.kr.login.web.UserVO" >
+		update user_cook 
+		set 
+		user_pw = #{user_pw}, user_name = #{user_name}, user_age = #{user_age}, user_email=#{user_email}
+		where user_id = #{user_id}
+	</update>
+	
+	<select id= "userMax" resultType="int">
+		select max(user_num) from user_cook
+	</select>
+	
+	<insert id="userInsert" parameterType="co.kr.proj.userVO.UserVO">
+		insert into user_cook values
+		(#{user_num},#{user_id},#{user_pw},#{user_name},#{user_age},#{user_email})
+	</insert>
+	
+	<delete id="userDelete">
+		delete from user_cook where user_id = #{user_id}
+	</delete>
+	
+	<select id="userTotal" resultType="int">
+		select count(*) 
+		from
+		user_cook
+		<if test="keyword != null and keyword != ''">
+			where ${type} like '%'||#{keyword}||'%'
+		</if>
+	</select>
+	
+	<delete id="user_delete">
+		delete from user_cook
+		where user_id = #{user_id}
+	</delete>
+	
+	<update id="user_modify">
+		update user_cook
+		set
+		user_num = #{user_num}, user_pw = #{user_pw}, user_name = #{user_name},user_age = #{user_age}, user_email = #{user_email}
+		where
+		user_id = #{user_id}
+	</update>
+</mapper>

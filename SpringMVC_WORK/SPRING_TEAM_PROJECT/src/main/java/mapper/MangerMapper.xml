@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.kr.myapp.service.mapper.MangerMapper">
+
+	<insert id="insert">
+		insert into cook_notice (n_num,n_title,n_content,n_writer,n_cnt)
+		values((select nvl(max(n_num), 0)+1 from
+		cook_notice),#{n_title},#{n_content},#{n_writer},#{n_cnt})
+	</insert>
+
+	<select id="detail" resultType="co.kr.myapp.model.ManagerVO">
+		select * from cook_notice where n_num=#{n_num}
+
+
+	</select>
+
+	<update id="cntUpdate">
+		update cook_notice set
+		n_cnt =n_cnt+1
+		where n_num=#{n_num}
+	</update>
+
+
+	<update id="update">
+		update cook_notice set
+		n_title=#{n_title},
+		n_content =#{n_content},
+		n_writer =#{n_writer}
+		where n_num=#{n_num}
+	</update>
+
+	<delete id="delete">
+		delete from cook_notice where n_num=#{n_num}
+	</delete>
+
+	<!-- 페이징 -->
+	<select id="selectAll"
+		resultType="co.kr.myapp.model.ManagerVO">
+		<![CDATA[
+			select * from
+			(
+				select rownum rn, n_num,n_title,n_content,n_date,n_writer,n_cnt 
+				from cook_notice 
+			]]>
+		<if test="keyword != null and keyword != ''">
+			where ${type} like '%'||#{keyword}||'%'
+		</if>
+		order by n_num desc
+			<![CDATA[	
+			)a
+				where a.rn > #{startRn}
+				and a.rn <= #{endRn}
+				order by n_num desc
+		]]>
+	</select>
+	
+	<!-- 글갯수 불러오기, 검색 -->
+	<select id="noticeTotal" resultType="int">
+		select count(*)
+		from
+		cook_notice
+		<if test="keyword != null and keyword != ''">
+			where ${type} like '%'||#{keyword}||'%'
+		</if>
+	</select>
+	
+	<select id="userDetail" resultType="co.kr.myapp.model.UserVO">
+		select * from user_cook 
+		where user_id = #{user_id}
+	</select>
+	
+	<select id="cntMax" resultType="int">
+		select max(n_num)
+		from
+		cook_notice
+	</select>
+
+</mapper>

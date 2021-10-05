@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="co.kr.myapp.service.mapper.MangerCookMapper">
+ <!-- ========================selectAll=================================== -->
+	
+<select id="selectAll"
+	resultType="co.kr.myapp.model.ManagerCookVO">
+	<![CDATA[
+		select * from 
+		(
+			select rownum rn,c_num,c_title,c_content,c_date,c_writer,c_cnt 
+			from board_cook
+		]]>
+	<if test="keyword != null and keyword != ''">
+		where ${type} like '%'||#{keyword}||'%'
+	</if>
+	order by c_num desc
+		<![CDATA[
+		  )a
+		  	where a.rn > #{startRn}
+		  	and a.rn <= #{endRn}
+		 ]]>
+</select>
+	<!-- 검색  -->
+	<select id="noticeTotal" resultType="int">
+	
+	select count(*)
+	from 
+	board_cook
+	<if test="keyword !=null and keyword !=''">
+		where ${type} like '%'||#{keyword}||'%'
+	</if>
+	</select>
+
+
+ <!-- ===================================================================== -->
+ 
+ <!-- =========================selectOne=================================== -->
+  <select id="selectOne"
+			resultType="co.kr.myapp.model.ManagerCookVO">
+			
+			select*from board_cook where c_num=#{c_num} 
+  </select>
+   <!-- ===================================================================== -->
+   
+   <!-- =========================select_num=================================== -->
+   <select id="lastcookboardnum"
+			resultType="int">
+			
+			select max(c_num) from board_cook
+  </select>
+   <!-- ===================================================================== -->
+   
+   <update id="update">
+
+	update board_cook set
+	c_title =#{c_title},
+	c_writer =#{c_writer},
+	c_content =#{c_content}
+
+	where c_num =#{c_num}
+   </update>
+   
+  <!-- ===================================================================== -->
+   <update id="cntUpdate">
+			
+			update board_cook set 
+			c_cnt =  c_cnt+1
+			where c_num = #{c_num}
+  </update>
+  <!-- ===================================================================== -->
+  
+ <!-- =============================insert=================================== -->
+   <insert id="insert">
+  		insert into 
+  		board_cook (c_num,c_title,c_content,c_writer,c_cnt)
+		values(#{c_num},#{c_title},#{c_content},#{c_writer},#{c_cnt})
+  </insert>
+   <!-- ===================================================================== -->
+   
+   <!-- =============================delete=================================== -->
+  <delete id="delete">
+  		DELETE FROM board_cook WHERE c_num = #{c_num}
+  </delete>
+  	<!-- ===================================================================== -->
+  	
+  	<select id="cntMax" resultType="int">
+  		select max(c_num)
+  		from
+  		board_cook
+  	</select>
+</mapper>
