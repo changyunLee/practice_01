@@ -1,0 +1,5 @@
+package co.kr.board.vo;
+
+public class ReplyVO {
+
+}

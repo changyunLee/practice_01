@@ -1,0 +1,12 @@
+package co.kr.user.service;
+
+import org.springframework.stereotype.Service;
+
+import co.kr.user.vo.UserVO;
+
+
+public interface UserService {
+
+	int joinus(UserVO dto);
+
+}

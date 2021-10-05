@@ -1,0 +1,12 @@
+package org.comstudy21.myapp.model;
+
+import lombok.Data;
+
+@Data
+public class SaramDTO {
+	private String idx; 
+	private String id;
+	private String name;
+	private String email;
+
+}

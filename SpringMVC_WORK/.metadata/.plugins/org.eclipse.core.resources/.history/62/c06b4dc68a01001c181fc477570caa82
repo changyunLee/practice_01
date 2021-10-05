@@ -1,0 +1,31 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page session="false"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<h1>사람 목록</h1>
+<hr />
+<table border="1" width="550">
+<tr>
+	<td>NO</td>
+	<td>ID</td>
+	<td>NAME</td>
+	<td>enail</td>
+</tr>
+<c:forEach var="saram" items="${saramList}"></c:forEach>
+<tr>
+	<td>${saram.idx }</td>
+	<td>${saram.id }</td>
+	<td>${saram.name }</td>
+	<td>${saram.email }</td>
+</tr>
+</table>
+</body>
+</html>

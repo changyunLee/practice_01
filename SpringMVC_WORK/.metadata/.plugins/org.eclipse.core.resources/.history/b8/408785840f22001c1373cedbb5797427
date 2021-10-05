@@ -1,0 +1,52 @@
+package co.kr.user.service.impl;
+
+import java.util.HashMap;
+
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import co.kr.user.service.UserService;
+import co.kr.user.service.mapper.UserMapper;
+import co.kr.user.vo.UserVO;
+
+@Service
+public class UserServiceImpl implements UserService{
+
+	@Autowired 
+
+	UserMapper mapper;
+
+	@Override
+	public int joinus(UserVO dto) {
+		return mapper.joinus(dto);
+	}
+
+
+	@Override
+	public UserVO login(String userid, String userpass, HttpSession session) {
+		HashMap<String, Object> login = new HashMap<String, Object>();
+		UserVO vo = new UserVO();
+		int i = mapper.loginCheck(userid);
+		if( i > 0 ) {
+			login.put("userid", userid);
+			login.put("userpass", userpass);
+			vo=mapper.login(login);
+			if(vo==null) {
+				vo = new UserVO();
+				return vo;
+			}else {
+				session.setAttribute("userid", userid);
+				return vo;
+			}
+		}else { 
+			return vo;
+		}
+		System.out.println(vo);
+		return vo;
+	}
+
+
+	
+}

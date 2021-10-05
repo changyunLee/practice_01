@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item key="selection" value="Copyri"/>
+		<item key="wrap" value="true"/>
+		<item key="casesensitive" value="false"/>
+		<item key="wholeword" value="false"/>
+		<item key="incremental" value="false"/>
+		<item key="isRegEx" value="false"/>
+		<list key="findhistory">
+			<item value="copyri"/>
+			<item value="datatable"/>
+			<item value="data"/>
+			<item value="button"/>
+			<item value="main"/>
+			<item value="my"/>
+			<item value="list_ajax.do"/>
+			<item value="runtime"/>
+			<item value="td"/>
+			<item value="dbcp"/>
+			<item value="h2"/>
+			<item value="jdbc"/>
+			<item value="ModelAndView"/>
+			<item value="&lt;aop:aspect ref=&quot;afterThorwing&quot;&gt;"/>
+			<item value="package org.comstudy21.myapp.model;"/>
+		</list>
+		<list key="replacehistory">
+			<item value="th"/>
+			<item value="void"/>
+		</list>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
+		<item key="DIALOG_X_ORIGIN" value="810"/>
+		<item key="DIALOG_Y_ORIGIN" value="273"/>
+		<item key="DIALOG_WIDTH" value="393"/>
+		<item key="DIALOG_HEIGHT" value="523"/>
+		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-18|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>
+	</section>
+</section>

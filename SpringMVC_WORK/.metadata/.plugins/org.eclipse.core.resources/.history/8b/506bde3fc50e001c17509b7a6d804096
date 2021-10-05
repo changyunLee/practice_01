@@ -1,0 +1,44 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>▶Detail page◀</h1>
+
+<table border="1">
+
+<tr>
+	<td>번호</td>
+	<th>${board.seq }</th>
+</tr>
+<tr>
+	<td>제목</td>
+	<th>${board.title }</th>
+</tr>
+<tr>
+	<td>작성자</td>
+	<th>${board.writer }</th>
+</tr>
+<tr colsapn=700>
+	<td>내용</td>
+	<th>${board.content }</th>
+</tr>
+<tr>
+	<td>날짜</td>
+	<th>${board.regDate }</th>
+</tr>
+<tr>
+	<td>조회수</td>
+	<th>${board.cnt}</th>
+</tr>
+</table>
+
+
+
+
+</body>
+</html>

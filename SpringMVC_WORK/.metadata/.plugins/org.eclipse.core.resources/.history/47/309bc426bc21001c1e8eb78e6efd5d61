@@ -1,0 +1,14 @@
+package co.kr.user.service.mapper;
+
+import org.apache.ibatis.annotations.Mapper;
+
+import co.kr.user.vo.UserVO;
+
+@Mapper
+public interface UserMapper {
+
+	int joinus(UserVO dto);
+
+	
+
+}

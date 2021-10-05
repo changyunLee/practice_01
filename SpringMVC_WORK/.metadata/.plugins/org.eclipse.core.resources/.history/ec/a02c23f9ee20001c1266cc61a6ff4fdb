@@ -1,0 +1,40 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript"
+ src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+ <script type="text/javascript">
+ 
+ function delete(){
+	 
+	 $.ajax({
+		url :"deletej.do",
+		type: "POST",
+		data: $("update").serialize(),
+		dataType:"JSON"
+	 })
+	 
+	 
+ }
+ 
+ 
+ 
+ 
+ </script>
+</head>
+<body>
+<form id="delete">
+<input type="hidden" name="bnum" value="${board.bnum }" /><br />
+<p>${board.bnum }번 글을 삭제 하시겠습니까</p>
+<input type="submit" value="삭제" />
+
+
+</form>
+<a href="home.do">목록으로 돌아가기</a>
+
+</body>
+</html>

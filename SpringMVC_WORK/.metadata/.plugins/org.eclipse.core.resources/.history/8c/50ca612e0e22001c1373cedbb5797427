@@ -1,0 +1,13 @@
+package co.kr.user.service;
+
+import co.kr.user.vo.UserVO;
+
+
+public interface UserService {
+
+	int joinus(UserVO dto);
+
+	UserVO login(UserVO dto);
+
+
+}

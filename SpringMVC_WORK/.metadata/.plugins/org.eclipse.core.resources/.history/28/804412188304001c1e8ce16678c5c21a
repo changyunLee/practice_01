@@ -1,0 +1,32 @@
+package org.comstudy21.myapp;
+
+import javax.servlet.http.HttpServletResponse;
+
+import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+@Controller
+public class SaramRestController {
+	Logger logger = LoggerFactory.getLogger(getClass());
+	
+	@RequestMapping(value="/list.do", method=RequestMethod.GET)
+	@ResponseBody
+	public String listObject(HttpServletResponse resp) {
+		resp.setContentType("text/json; charset=UTF-8");
+		resp.setCharacterEncoding("UTF-8");
+		//return "{\"name\":\"Spring\"}";
+		
+		JSONObject jsonObj = new JSONObject();
+		jsonObj.put("no", 1);
+		jsonObj.put("id", "HONG");
+		jsonObj.put("name", "홍길동");
+		jsonObj.put("email", "hong@korea.com");
+		
+		return jsonObj.toString();
+	}
+}

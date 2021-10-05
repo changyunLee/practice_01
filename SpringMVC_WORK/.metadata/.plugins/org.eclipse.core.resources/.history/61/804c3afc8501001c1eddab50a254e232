@@ -1,0 +1,9 @@
+package org.comstudy21.myapp.model;
+
+public class SaramDTO {
+	private String idx; 
+	private String id;
+	private String name;
+	private String email;
+
+}

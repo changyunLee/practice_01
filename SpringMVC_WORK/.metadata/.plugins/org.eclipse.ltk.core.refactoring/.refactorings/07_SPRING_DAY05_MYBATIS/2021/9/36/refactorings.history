@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;07_SPRING_DAY05_MYBATIS/src/main/resources/mappers/board-mapper.xml&apos; to &apos;BoardMapper.xml&apos;" description="Rename resource &apos;board-mapper.xml&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/main/resources/mappers/board-mapper.xml" name="BoardMapper.xml" stamp="1630546469755" updateReferences="true"/>
+</session>
