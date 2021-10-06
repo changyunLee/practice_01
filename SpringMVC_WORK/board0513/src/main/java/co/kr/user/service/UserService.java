@@ -7,11 +7,15 @@ import co.kr.user.vo.UserVO;
 
 public interface UserService {
 
-	UserVO joinus(UserVO dto);
+	int joinus(UserVO dto);
 
 	UserVO login(String userid, String userpass, HttpSession session);
 
 	int idCheck(UserVO vo);
 
 	int userUpdate(UserVO vo);
+
+	int passCheck(UserVO vo);
+
+	int userDelete(UserVO vo);
 }

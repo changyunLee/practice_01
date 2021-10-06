@@ -62,7 +62,7 @@ public class UserController {
 	public ModelAndView joinus_ajax(UserVO vo) {
 		ModelAndView json =new ModelAndView("jsonView");
 		
-		UserVO user = service.joinus(vo);
+		int user = service.joinus(vo);
 		json.addObject("result", user);
 		
 		return json;
@@ -88,11 +88,16 @@ public class UserController {
 		
 		return "userDelete";
 	}
-	@RequestMapping(value = "/userdelete.do" ,method = RequestMethod.POST)
-	public String userdelete() {
+	@RequestMapping(value = "/userdeleteJ.do" ,method = RequestMethod.POST)
+	public ModelAndView userdelete(UserVO vo) {
+		ModelAndView json =new ModelAndView("jsonView");
+		
+		//int passChk = service.passCheck(vo);
 		
 		
 		
-		return "redirect:login.do";
+		json.addObject("result",service.userDelete(vo));
+		
+		return json;
 	}
 }

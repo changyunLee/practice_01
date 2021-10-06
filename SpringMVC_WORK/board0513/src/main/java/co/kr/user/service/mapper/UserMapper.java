@@ -9,7 +9,7 @@ import co.kr.user.vo.UserVO;
 @Mapper
 public interface UserMapper {
 
-	UserVO joinus(UserVO vo);
+	int joinus(UserVO vo);
 	
 	int loginCheck(String userid);
 
@@ -18,6 +18,10 @@ public interface UserMapper {
 	int idCheck(UserVO vo);
 
 	int userUpdate(UserVO vo);
+
+	int passCheck(UserVO vo);
+
+	int userDelete(UserVO vo);
 
 
 	

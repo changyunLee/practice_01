@@ -19,18 +19,8 @@ public class UserServiceImpl implements UserService {
 	UserMapper mapper;
 
 	@Override
-	public UserVO joinus(UserVO vo) {
-		int i = mapper.idCheck(vo);
-		if(i==1) {
-			vo = new UserVO();
-			vo.setMsg("중복된 아이디 있음");
-			return vo;
-		}else if(i==0) {
-			return mapper.joinus(vo);
-		}else {
-			return vo;
-		}
-		
+	public int joinus(UserVO vo) {
+	return mapper.joinus(vo);
 	}
 	
 		
@@ -71,6 +61,20 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public int userUpdate(UserVO vo) {
 		return mapper.userUpdate(vo);
+	}
+
+
+
+	@Override
+	public int passCheck(UserVO vo) {
+		return mapper.passCheck(vo);
+	}
+
+
+
+	@Override
+	public int userDelete(UserVO vo) {
+		return mapper.userDelete(vo);
 	}
 
 
