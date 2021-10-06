@@ -16,7 +16,11 @@
 <!-- Latest compiled JavaScript -->
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-	
+	<script type="text/javascript">
+	$("#submit").on("click", function() {
+		alert("회원 수정 완료");
+	}
+	</script>
 </head>
 <body>
 <div class="container">
@@ -43,7 +47,7 @@
 </div>
 </div>
 <div>
-<input type="submit" value="회원정보수정" class="btn btn-primary"/>
+<input type="submit" value="회원정보수정"  id="submit" class="btn btn-primary"/>
 </div>
 </form>
 <div>

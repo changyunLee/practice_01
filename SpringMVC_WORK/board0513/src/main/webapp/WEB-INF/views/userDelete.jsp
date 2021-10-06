@@ -33,14 +33,19 @@ function userDel(){
 			data : $("#del").serialize(),
 			success: function(result) {
 				console.log(result);
-				alert("삭제 완료");
-				location.href="login.do";
+				if ($("#userpass").val() == "") {
+					alert("비밀번호를 입력 해주세요");
+					$("#userpass").focus();
+					return false;
+					}else{
+						alert("삭제 완료");
+						location.href="login.do";
 					}
-				});
+				
+				}
+			});
  		
-			}
-
-
+		}
 
 </script>
 </head>
@@ -52,7 +57,7 @@ function userDel(){
 	<form id="del">
 	<div class="form-group">
 		<input class="form-control" type="text" name="userid" value="${id}" } readonly /><br />
-		<input class="form-control" type="text" name="userpass" placeholder="password ..." }  />
+		<input class="form-control" type="text" id="userpass" name="userpass" placeholder="password ..." }  />
 	</div>
 	</form>
 		<button class="btn btn-warning" type="button" id="submit" onclick="userDel()">회원 삭제</button>
