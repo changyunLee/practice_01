@@ -223,6 +223,8 @@ D:\spring_work\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2555612756.
 \board0513\src\main\java
 D:\spring_work\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1267882534.index
 \board0513\src\main\java
+D:\practice_01\SpringMVC_WORK\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2017669304.index
+\board0513\src\main\java
 B:\spring_work\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1917811522.index
 \04_SPRING_DAY01_COMPONENT\src\main\java
 D:\spring_work\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2017669304.index

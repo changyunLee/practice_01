@@ -60,11 +60,8 @@
 					alert("회원가입 성공");
 					location.href = "login.do";
 				}
-				
-			}
-
-		})
-
+		});
+		
 	}
 </script>
 </head>
@@ -108,8 +105,7 @@
 									</form>
 									<div class="mt-4 mb-0">
 										<div class="d-grid">
-											<button  class="btn btn-primary" type="button" id="submit" onclick="joinus()">계정
-												생성</button>
+											<button  class="btn btn-primary" type="button" id="submit" onclick="joinus()">계정생성</button>
 										</div>
 									</div>
 								</div>
