@@ -61,9 +61,13 @@ public class UserController {
 	@RequestMapping(value = "joinusJ.do" ,method = RequestMethod.POST)
 	public ModelAndView joinus_ajax(UserVO vo) {
 		ModelAndView json =new ModelAndView("jsonView");
-		
-		int user = service.joinus(vo);
-		json.addObject("result", user);
+		if(service.joinus(vo)>0) {
+			json.addObject("msg", "회원가입 성공");
+			json.addObject("result", "1");
+		}else {
+			json.addObject("msg", "이미 등록된 아이디입니다");
+			json.addObject("reuslt", "2");
+		}
 		
 		return json;
 	}
@@ -92,10 +96,7 @@ public class UserController {
 	public ModelAndView userdelete(UserVO vo) {
 		ModelAndView json =new ModelAndView("jsonView");
 		
-		//int passChk = service.passCheck(vo);
-		
-		
-		
+
 		json.addObject("result",service.userDelete(vo));
 		
 		return json;

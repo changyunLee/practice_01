@@ -1,6 +1,7 @@
 package co.kr.user.service.mapper;
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
@@ -22,6 +23,8 @@ public interface UserMapper {
 	int passCheck(UserVO vo);
 
 	int userDelete(UserVO vo);
+
+	List<UserVO> userCheck(UserVO vo);
 
 
 	

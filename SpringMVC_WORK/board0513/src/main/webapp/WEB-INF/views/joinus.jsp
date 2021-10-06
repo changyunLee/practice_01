@@ -54,11 +54,17 @@
 			method : "POST",
 			data : $("#joinus").serialize(),
 			dataType : "JSON",
-			success : function(result) {
+			success : function(i) {
 		
-					console.log(result);
-					alert("회원가입 성공");
+					console.log(i);
+					
+					alert(i.msg);
+					
+					if(i.result == 1){
 					location.href = "login.do";
+					}else{
+						location.href = "joinus.do";
+					}
 				}
 				
 					

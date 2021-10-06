@@ -23,7 +23,7 @@ public class BoardServiceImpl implements BoardService {
 		//String -> 보내줄값의이름
 		//Object-> 넣어줄값의이름 
 		HashMap<String, Object> hashMap= new HashMap<String,Object>();
-		//한페이지에서 10개의 게시물을 보여줄거라고 선언해준다 
+		//한페이지에서 10개의 게시물을 보여줄거라고 선언
 		int amount=10;
 		
 		hashMap.put("startRn", (page-1)*amount);

@@ -1,6 +1,8 @@
 package co.kr.user.service.impl;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -20,6 +22,12 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public int joinus(UserVO vo) {
+		List<UserVO> list = mapper.userCheck(vo);
+		for(int i = 0; i <list.size(); i++) {
+			if(vo.getUserid().equals(list.get(i).getUserid())) {
+				return 0;
+			}
+		}
 		return mapper.joinus(vo);
 	}
 	
@@ -49,13 +57,15 @@ public class UserServiceImpl implements UserService {
 		}
 	}
 
-
-
 	@Override
 	public int idCheck(UserVO vo) {
 		return mapper.idCheck(vo);
 	}
 
+	@Override
+	public int passCheck(UserVO vo) {
+		return mapper.passCheck(vo);
+	}
 
 
 	@Override
@@ -64,20 +74,9 @@ public class UserServiceImpl implements UserService {
 	}
 
 
-
-	@Override
-	public int passCheck(UserVO vo) {
-		return mapper.passCheck(vo);
-	}
-
-
-
 	@Override
 	public int userDelete(UserVO vo) {
 		return mapper.userDelete(vo);
 	}
 
-
-	
-	
 }
