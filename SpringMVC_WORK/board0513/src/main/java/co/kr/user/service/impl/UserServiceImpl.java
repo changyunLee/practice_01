@@ -20,7 +20,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public int joinus(UserVO vo) {
-	return mapper.joinus(vo);
+		return mapper.joinus(vo);
 	}
 	
 		

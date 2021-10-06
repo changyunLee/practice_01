@@ -55,10 +55,14 @@
 			data : $("#joinus").serialize(),
 			dataType : "JSON",
 			success : function(result) {
-				console.log(result);
+		
+					console.log(result);
 					alert("회원가입 성공");
 					location.href = "login.do";
 				}
+				
+					
+				
 		});
 		
 	}

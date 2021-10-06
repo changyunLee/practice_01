@@ -7,7 +7,7 @@ import co.kr.user.vo.UserVO;
 
 public interface UserService {
 
-	int joinus(UserVO dto);
+	int joinus(UserVO vo);
 
 	UserVO login(String userid, String userpass, HttpSession session);
 

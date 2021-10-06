@@ -114,6 +114,7 @@
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="D:\practice_01\SpringMVC_WORK\board0513"/>
 			<item value="D:\spring_work\SPRING_TEAM_PROJECT"/>
 			<item value="D:\spring_work\ManagerCook"/>
 			<item value="D:\spring_work\board0513"/>
