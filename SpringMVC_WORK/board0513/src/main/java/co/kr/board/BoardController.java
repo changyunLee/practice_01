@@ -139,6 +139,15 @@ public class BoardController {
 		
 		return json;
 	}
+	
+	@RequestMapping(value = "/update.do", method = RequestMethod.GET)
+	public String update_reply(Model model,ReplyVO vo) {
+
+			model.addAttribute("replyDelete",service.selectReply(vo.getRno()));
+		return "updateReply";
+		
+	}
+	
 
 	@RequestMapping(value = "/update.do", method = RequestMethod.GET)
 	public String update_page(int bnum, Model model) {

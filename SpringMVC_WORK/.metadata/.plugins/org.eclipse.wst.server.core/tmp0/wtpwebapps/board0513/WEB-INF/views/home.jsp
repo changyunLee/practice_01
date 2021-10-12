@@ -45,7 +45,7 @@
 					html += "<td>" + list[i].writer + "</td>"
 					html += "<td>" + list[i].bdate + "</td>"
 					html += "<td>" + list[i].bcnt + "</td>"
-					html += "<td>" + list[i].bcontent + "</td>"
+					//html += "<td>" + list[i].bcontent + "</td>"
 					html += "<td>" + list[i].btype + "</td>"
 					$("#tbody").append(html)
 				}
@@ -214,8 +214,7 @@
 										<td>제목</td>
 										<td>작성자</td>
 										<td>작성일</td>
-										<td>조회</td>
-										<td>내용</td>
+										<td>조회</td>							
 										<td>분류</td>
 									</tr>
 								</thead>
@@ -225,8 +224,7 @@
 										<td>제목</td>
 										<td>작성자</td>
 										<td>작성일</td>
-										<td>조회</td>
-										<td>내용</td>
+										<td>조회</td>									
 										<td>분류</td>
 									</tr>
 								</tfoot>

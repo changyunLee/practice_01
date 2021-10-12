@@ -95,5 +95,32 @@
 				values (#{bnum}, BD_REPLY_SEQ.NEXTVAL , #{content} , #{writer})
 				]]>
 		</insert>
+		
+		<update id="updateReply" parameterType="co.kr.board.vo.ReplyVO">
+			<![CDATA[
+			update bd_reply set content = #{content}
+			where rno = #{rno}
+			]]>
+		</update>
+		
+		<delete id="deleteReply" parameterType="co.kr.board.vo.ReplyVO">
+		<![CDATA[
+			delete from bd_reply 
+			where rno = #{rno}
+		]]>
+		</delete>
+		
+		<select id="selectReply" resultType="co.kr.board.vo.ReplyVO">
+			<![CDATA[
+				select 
+					bno,
+					rno,
+					content,
+					writer,
+					regdate
+					from bd_reply  
+					where rno = #{rno}
+			]]>
+		</select>
 
 </mapper>

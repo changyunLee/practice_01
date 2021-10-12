@@ -31,4 +31,6 @@ public interface BoardMapper {
 
 	int writereply(ReplyVO dto);
 
+	int selectReply(int rno);
+
 }

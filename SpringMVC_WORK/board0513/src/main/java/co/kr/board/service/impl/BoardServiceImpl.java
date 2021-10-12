@@ -80,6 +80,11 @@ public class BoardServiceImpl implements BoardService {
 	public int writereply(ReplyVO dto) {
 		return mapper.writereply(dto);
 	}
+
+	@Override
+	public int selectReply(int rno) {
+		return mapper.selectReply(rno);
+	}
 	
 	
 

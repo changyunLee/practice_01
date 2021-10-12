@@ -27,6 +27,8 @@ public interface BoardService {
 
 	int writereply(ReplyVO dto);
 
+	int selectReply(int rno);
+
 	
 
 }
