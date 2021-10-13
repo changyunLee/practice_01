@@ -82,8 +82,19 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public int selectReply(int rno) {
+	public ReplyVO selectReply(int rno) {
 		return mapper.selectReply(rno);
+	}
+
+	@Override
+	public int deleteReply(int rno) {
+		return mapper.deleteReply(rno);
+	}
+
+	@Override
+	public int updateReply(ReplyVO vo) {
+
+		return mapper.updateReply(vo);
 	}
 	
 	

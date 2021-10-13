@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import co.kr.board.service.BoardService;
 import co.kr.board.vo.BoardVO;
@@ -139,12 +140,44 @@ public class BoardController {
 		
 		return json;
 	}
+//	@RequestMapping(value = "replyDelete.do", method = RequestMethod.GET)
+//	public String replyDelete_page(int rno, int bnum ,Model model) {
+//		
+//		model.addAttribute("board", service.detail(bnum));
+//		model.addAttribute("reply",service.selectReply(rno));
+//		
+//		return "replyDelete";
+//	}
 	
-	@RequestMapping(value = "/update.do", method = RequestMethod.GET)
-	public String update_reply(Model model,ReplyVO vo) {
-
-			model.addAttribute("replyDelete",service.selectReply(vo.getRno()));
-		return "updateReply";
+	@RequestMapping(value = "replyDelete.do", method = RequestMethod.POST)
+	public ModelAndView replyDelete(int rno) {
+		
+		
+		ModelAndView json = new ModelAndView("jsonView");
+		
+		json.addObject("result",service.deleteReply(rno));
+		
+		
+		
+		return json;
+	}
+	
+//	@RequestMapping(value = "/replyupdate.do", method = RequestMethod.GET)
+//	public String update_reply_page(Model model,int rno) {
+//
+//		model.addAttribute("reply",service.selectReply(rno));
+//		return "updateReply";
+//		
+//	}
+	@RequestMapping(value = "/updateReply.do", method = RequestMethod.POST)
+	public ModelAndView update_reply(Model model,ReplyVO vo) {
+		
+		ModelAndView json = new ModelAndView("jsonView");
+		
+		json.addObject("result",service.updateReply(vo));
+		
+		
+		return json;
 		
 	}
 	

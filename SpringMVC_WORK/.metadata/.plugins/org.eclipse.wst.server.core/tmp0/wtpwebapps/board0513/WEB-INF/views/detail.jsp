@@ -28,15 +28,42 @@
 		$.ajax({
 			url : "/reply.do",
 			type : "POST",
-			data : $("#writerply").serialize(),
+			data : $("#writereply").serialize(),
 			dataType : "JSON",
 			success : function(result) {
 				console.log(result);
 				alert("작성 완료");
-				location.href = "/home.do";
+				location.href = "/detail.do?bnum="+${board.bnum};
 			}
 		})
 	}
+	
+	function replyDelete() {
+		$.ajax({ 
+		url : "replyDelete.do",
+		type : "POST" , 
+		data : $("#deletereply").serialize(),
+		dataType : "JSON",
+		success : function(result) {
+			console.log(result);
+			location.href = "/detail.do?bnum="+${board.bnum};
+			}
+		})
+	}
+	
+	function replyUpdate() {
+		$.ajax({ 
+		url : "updateReply.do",
+		type : "POST" , 
+		data : $("#updatereply").serialize(),
+		dataType : "JSON",
+		success : function(result) {
+			console.log(result);
+			location.href = "/detail.do?bnum="+${board.bnum};
+			}
+		})
+	}
+	
 </script>
 </head>
 <body>
@@ -69,27 +96,29 @@
 				<th>내용</th>
 				<td><textarea class="form-control" rows="5" id="bcontent" name="bcontent" readonly >${board.bcontent }</textarea></td>
 			</tr>
-
 		</table>
-
-		<button type="button" class="btn btn-warning"
-			onclick="location.href='update.do?bnum=${board.bnum}'">게시글
-			수정</button>
-		<button type="button" class="btn btn-danger"
-			onclick="location.href='delete.do?bnum=${board.bnum}'">게시글
-			삭제</button>
+		
+  		<c:if test="${board.writer == id }">
+  		
+			<button type="button" class="btn btn-warning"
+				onclick="location.href='update.do?bnum=${board.bnum}'">게시글
+				수정</button>
+			<button type="button" class="btn btn-danger"
+				onclick="location.href='delete.do?bnum=${board.bnum}'">게시글
+				삭제</button>
+		</c:if>
+			
 		<button type="button" class="btn btn-info"
 			onclick="location.href='home.do'">홈으로 돌아가기</button>
 
 
 
 
-		<!-- 댓글  -->
+<!---------------------------------------------댓글 ------------------------------------------------------------------------------->
 
 		<table border="1" width="50%">
-			<form id="writerply">
-
-				<h3 style="text-align: center">---------------------------------------댓글---------------------------------------</h3>
+			<form id="writereply">
+				<h3 style="text-align: center"> reply</h3>
 				<input type="hidden" name="bnum" value=" ${board.bnum }" /><br />
 
 				<div class="form-group">
@@ -103,8 +132,7 @@
 				</div>
 			</form>
 		</table>
-		<button type="button" class="btn btn-primary" onclick="reply()">댓글
-			입력</button>
+		<button type="button" class="btn btn-primary" onclick="reply()">댓글입력</button>
 
 		<div id="reply">
 			<ol class="replyList">
@@ -115,8 +143,77 @@
 							${reply.writer } <br /> 작성 날짜 : ${reply.regdate }<br />
 						</p>
 						<p class="bg-info">-->${reply.content}</p>
+						
+<!-----------------------------------------------모달  button------------------------------------------------------------------------------------>						
+<c:if test="${reply.writer == id }">
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"> 댓글 삭제  </button>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2"> 댓글 수정 </button>
 
-					</li>
+
+<!----------------------------------- ----------댓글 삭제 모달 ---------------------------------------------------------------------------------->
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">게시물 삭제</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+      ${reply.rno }번 댓글을 정말 삭제하시겠습니까?
+      </div>
+      <div class="modal-footer">
+     	 <form id="deletereply">
+      		<input type="hidden" name="rno" value="${reply.rno }"/>
+      	</form>
+      <button type="button" class="btn btn-primary" onclick="replyDelete()">삭제하기</button>
+     
+      	
+       	<button type="button" class="btn btn-secondary" data-dismiss="modal">취소하기</button>
+       	<a href="home.do">목록으로 돌아가기</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!------------------------------------------------------------------------------------------------------------------------------------------------->
+
+<!----------------------------------------------- 댓글 수정 모달 ---------------------------------------------------------------------------------->
+<!-- Modal -->
+<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">댓글 수정</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+			댓글 수정
+      </div>
+      <div class="modal-footer">
+      	<form id="updatereply">
+      		<input type="hidden" name="rno" value="${reply.rno }"/>
+     		<input type="text"  class="form-control"  name="content"  style="height:100px"/>
+      	</form>
+      <button type="button" class="btn btn-primary" onclick="replyUpdate()">수정하기</button>
+      <button type="button" class="btn btn-secondary" data-dismiss="modal">취소하기</button>
+      	
+       	
+       	<a href="home.do">목록으로 돌아가기</a>
+      </div>
+    </div>
+  </div>
+</div>
+</c:if>
+
+
+<!------------------------------------------------------------------------------------------------------------------------------------------------->
+						</li>				
 				</c:forEach>
 			</ol>
 		</div>

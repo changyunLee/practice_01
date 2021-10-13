@@ -27,7 +27,11 @@ public interface BoardService {
 
 	int writereply(ReplyVO dto);
 
-	int selectReply(int rno);
+	ReplyVO selectReply(int rno);
+
+	int deleteReply(int rno);
+
+	int updateReply(ReplyVO vo);
 
 	
 

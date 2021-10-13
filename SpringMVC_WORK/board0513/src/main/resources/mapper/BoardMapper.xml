@@ -96,7 +96,7 @@
 				]]>
 		</insert>
 		
-		<update id="updateReply" parameterType="co.kr.board.vo.ReplyVO">
+		<update id="updateReply" >
 			<![CDATA[
 			update bd_reply set content = #{content}
 			where rno = #{rno}
@@ -113,7 +113,7 @@
 		<select id="selectReply" resultType="co.kr.board.vo.ReplyVO">
 			<![CDATA[
 				select 
-					bno,
+					bnum,
 					rno,
 					content,
 					writer,
