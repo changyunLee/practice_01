@@ -92,7 +92,7 @@
 		<insert id="writereply" parameterType="co.kr.board.vo.ReplyVO">
 		<![CDATA[
 		insert into bd_reply(bnum, rno, content, writer)
-				values (#{bnum}, BD_REPLY_SEQ.NEXTVAL , #{content} , #{writer})
+					values (#{bnum}, BD_REPLY_SEQ.NEXTVAL , #{content} , #{writer})
 				]]>
 		</insert>
 		
