@@ -213,5 +213,11 @@ public class BoardController {
 		json.addObject("result",service.delete(bnum));
 		return json;
 	}
+	@RequestMapping(value = "/kakao.do", method = RequestMethod.GET)
+	public String kakao() {
+		
+
+		return "kakao";
+	}
 
 }
