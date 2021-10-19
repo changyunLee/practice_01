@@ -16,7 +16,7 @@ public interface UserMapper {
 
 	UserVO login(HashMap<String, Object> login);
 
-	int idCheck(UserVO vo);
+	int idCheck(String userid);
 
 	int userUpdate(UserVO vo);
 

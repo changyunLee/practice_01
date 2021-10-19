@@ -11,11 +11,13 @@ public interface UserService {
 
 	UserVO login(String userid, String userpass, HttpSession session);
 
-	int idCheck(UserVO vo);
+	int idCheck(String userid);
 
 	int userUpdate(UserVO vo);
 
 	int passCheck(UserVO vo);
 
 	int userDelete(UserVO vo);
+
+	
 }

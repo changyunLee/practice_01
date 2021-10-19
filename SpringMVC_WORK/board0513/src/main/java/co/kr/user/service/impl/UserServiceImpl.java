@@ -56,10 +56,12 @@ public class UserServiceImpl implements UserService {
 			return vo;
 		}
 	}
-
+	
 	@Override
-	public int idCheck(UserVO vo) {
-		return mapper.idCheck(vo);
+	public int idCheck(String userid) {
+		
+		
+		return mapper.idCheck(userid);
 	}
 
 	@Override
@@ -78,5 +80,8 @@ public class UserServiceImpl implements UserService {
 	public int userDelete(UserVO vo) {
 		return mapper.userDelete(vo);
 	}
+
+
+
 
 }
