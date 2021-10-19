@@ -79,7 +79,7 @@
 	<!-- nav바 -->
 	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
 		<!-- Navbar Brand-->
-		<a class="navbar-brand ps-3" href="/home.do">게시판 연습</a>
+		<a class="navbar-brand ps-3" href="/home.do">게시판 커뮤니티</a>
 		<!-- Navbar-->
 		<ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
 			<li class="nav-item dropdown"><a
@@ -165,7 +165,7 @@
 				</div>
 				<div class="sb-sidenav-footer">
 					<div class="small">창윤코딩교실</div>
-					게시판연습
+					게시판 커뮤니티
 				</div>
 			</nav>
 		</div>
