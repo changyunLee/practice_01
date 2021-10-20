@@ -37,6 +37,27 @@
 			}
 		});
 	}
+	/* function sslogin() {
+		$.ajax({
+			url : "kakaoLogin.do",
+			method : "POST",
+			data : $("#sslogin").serialize(),
+			dataType : "JSON",
+			success : function(result) {
+				console.log(result);
+				location.href="redirect:login.do";
+				var rs = result.result;
+				if(rs == 0 ){
+					console.log("아이디 없음 회원가입 해야함")
+					//location.href = "/joinus.do";
+				}else if(rs > 0){
+					console.log("아이디 있음 로그인 가능");
+					location.href ="/home.do";
+					
+				}
+			}
+		});
+	} */
 </script>
 </head>
 <body class="bg-primary">
@@ -64,8 +85,17 @@
 							
 								
 									</form>
+									
 									<button type="button" id="submit" onclick="login()" class="btn btn-primary">로그인</button>
 									<button type="button"  onclick="location.href='joinus.do'" class="btn btn-primary">회원가입</button>
+									<div>
+									
+								 		<a href="javascript:kakaoLogin();" ><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFQOJtNpYFKTS1T5QdhIDFFgLzQO93BuFjFw&usqp=CAU" /></a>
+										<a href="javascript:kakaoLogout()">카카오 로그아웃</a>
+										<div>
+									
+										</div>
+									</div>
 								</div>						
 							</div>
 						</div>
@@ -75,10 +105,12 @@
 		</div>
 	
 	</div>
+	<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+	<script src="/resources/js/kakaoLogin.js"></script>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
 		crossorigin="anonymous"></script>
 	<script src="/resources/js/scripts.js"></script>
-	<script src="/resources/html/login.html"></script>
+	
 </body>
 </html>
